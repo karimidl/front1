@@ -1,0 +1,38 @@
+
+<div class="container-fluid px-1 py-5 mx-auto ">
+  <div class="row d-flex justify-content-center">
+    <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center addex">
+      <h3>Information of employee</h3>
+      <div class="card">
+        <br>
+        <div class="row justify-content-between text-left">
+          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3"> Matricule
+              :</label> &nbsp; &nbsp; {{employee?.matricule}} </div>
+          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Telephone <i
+                class="fa fa-phone" aria-hidden="true"></i>:</label> &nbsp; &nbsp; {{employee?.tele}} </div>
+        </div>
+        <div class="row justify-content-between text-left">
+          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">email :</label>
+            &nbsp; &nbsp; {{employee?.email}}</div>
+          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Phone number
+              :<span class="text-danger"> *</span></label>&nbsp; &nbsp; </div>
+        </div>
+        <div class="row justify-content-between text-left">
+          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Job title
+              :</label> &nbsp; &nbsp;{{employee?.poste_budgetaire}}</div>
+        </div>
+
+
+        <div class="container my-3 ">
+          <div class="col-md-12 text-center">
+            <button type="button" class="btn btn-secondary" routerLink='/infoleave/{{employee?.id}}'>Leave Info</button>&nbsp;&nbsp;
+            <!--<button type="button" class="btn btn-primary" routerLink='/addleave'>Add leave</button>&nbsp;&nbsp;-->
+              <button type="button" class="btn btn-success">Attestaion</button>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
+
