@@ -45,6 +45,7 @@ public onAddLeave(addForm:NgForm){
   this.leavesService.addLeaves(addForm.value).subscribe(
     (response:Leave)=>{
       console.log(response);
+      this.leave=response;
     },
     (error:HttpErrorResponse)=>{
       alert(error.message);
