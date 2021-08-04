@@ -1,9 +1,11 @@
+import { Employee } from './../employee/add-emplyee/employee';
 export interface Leave{
 
 id: number;
-start_time :Date;
-end_time:Date;
+date_debut :Date;
+date_fin:Date;
 duree_conje:number;
-typeConje:String;
+typeConje:String
+
 
 }

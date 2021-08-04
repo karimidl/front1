@@ -10,21 +10,16 @@
   </thead>
   <tbody>
 
-      <tr *ngFor="let l of leave">
+      <tr *ngFor="let l of employee.leaves">
         <td>{{l.typeConje}}</td>
         <td>{{l.date_debut}}</td>
         <td>{{l.date_fin}}</td>
-        <td>{{l.employee}}</td>
-
+        <td>{{employee.matricule}}</td>
       </tr>
-
-
-
   </tbody>
 </table>
 
 <div class="col-md-12 text-center">
-  <button type="button" class="btn btn-success" routerLink="/addleave">ADD Leave</button>
-
+  <button type="button" class="btn btn-success" routerLink="/addleave/{{employee?.id}}">ADD Leave</button>
 </div>
 <router-outlet></router-outlet>

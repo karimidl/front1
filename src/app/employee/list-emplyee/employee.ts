@@ -1,3 +1,4 @@
+import { Leave } from 'src/app/Entities/leave';
 export interface Employee{
 
 id: number;
@@ -15,5 +16,8 @@ poste_budgetaire : String;
 service_affectation : String;
 localite : String;
 photo : String;
+leaves: Leave[];
+
+
 
 }

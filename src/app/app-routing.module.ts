@@ -40,7 +40,7 @@ const routes: Routes = [
     component:InfoLeaveComponent
   },
   {
-    path:'addleave',
+    path:'addleave/:id',
     component:AddLeavesComponent
   },
   {

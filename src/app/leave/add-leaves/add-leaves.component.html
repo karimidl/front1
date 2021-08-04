@@ -3,23 +3,23 @@
       <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center addex">
           <h3>Ajouter Conge</h3>
           <div class="card">
-            <form>
+            <form #addForm="ngForm" (ngSubmit)="onAddLeave(addForm)">
               <div class="row justify-content-between text-left">
-                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">First name :</label>  &nbsp; &nbsp; <input type="text" id="nom" ngModel name="nom"  placeholder="Enter your first name" > </div>
-                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Last name :</label>  &nbsp; &nbsp; <input type="text" id="nom" ngModel name="nom"  placeholder="Enter your first name" > </div>
-                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Matricule:</label>  &nbsp; &nbsp;  <input type="text" id="matricule" ngModel name="matricule" placeholder="Enter your last name" > </div>
-                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Job title :<span class="text-danger"> *</span></label> &nbsp; &nbsp;<input type="text" id="poste_budgetaire" ngModel name="poste_budgetaire" placeholder="" > </div>
+                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">First name :</label>  &nbsp; &nbsp; <input type="text" id="nom" ngModel="{{employee?.nom}}" name="nom" readonly /> </div>
+                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Last name :</label>  &nbsp; &nbsp; <input type="text" id="prenom" ngModel="{{employee?.prenom}}" name="prenom"    readonly/> </div>
+                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Matricule:</label>  &nbsp; &nbsp;  <input type="text" id="matricule" ngModel="{{employee?.matricule}}" name="matricule"  readonly/> </div>
+                      <div class="form-group col-sm-6 flex-column d-flex test"> <label class="form-control-label px-3">Job title :<span class="text-danger"> *</span></label> &nbsp; &nbsp;<input type="text" id="poste_budgetaire" ngModel="{{employee?.poste_budgetaire}}" name="poste_budgetaire"  readonly /> </div>
 
                     </div>
                   <div class="row justify-content-between text-left">
-                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Start Date :<span class="text-danger"> *</span></label> &nbsp; &nbsp;<input type="date" id="email" ngModel name="email" placeholder="" > </div>
-                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">End Date :<span class="text-danger"> *</span></label>&nbsp; &nbsp; <input type="date" id="tele" ngModel name="tele" placeholder="" > </div>
+                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Start Date :<span class="text-danger"> *</span></label> &nbsp; &nbsp;<input type="date" id="date_debut" ngModel name="date_debut"  /> </div>
+                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">End Date :<span class="text-danger"> *</span></label>&nbsp; &nbsp; <input type="date" id="date_fin" ngModel name="date_fin" /> </div>
                   </div>
                   <div class="row justify-content-between text-left">
-                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">The substitute :<span class="text-danger"> *</span></label> &nbsp; &nbsp;<input type="text" id="poste_budgetaire" ngModel name="poste_budgetaire" placeholder="" > </div>
+                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">The substitute :<span class="text-danger"> *</span></label> &nbsp; &nbsp;<input type="text" id="poste_budgetaire"  name="poste_budgetaire"  /> </div>
                   </div>
                   <div class="row justify-content-between text-left">
-                      <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Observation<span class="text-danger"> *</span>&nbsp; &nbsp;</label> <input type="text" id="ans" name="ans" placeholder="" > </div>
+                      <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Leave Type<span class="text-danger"> *</span>&nbsp; &nbsp;</label> <input type="text" id="typeConje" ngModel name="typeConje"  /> </div>
                   </div>
                   <div class="row justify-content-end">
                       <div class="form-group col-sm-6 yesb"> <button type="submit" class="btn-block btn-primary" >Ajouter Conge</button> </div>
