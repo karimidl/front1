@@ -29,9 +29,6 @@ export class InfoLeaveComponent implements OnInit {
         (response: Employee) => {
           console.log(response.leaves);
 
-          // this.employees=response;
-
-          ///this.leaves=response.leaves;
           this.employee = response;
         },
         (error: HttpErrorResponse) => {

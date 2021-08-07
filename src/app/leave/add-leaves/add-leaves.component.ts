@@ -7,6 +7,7 @@ import { EmployeeService } from 'src/app/service/employee.service';
 import { ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-add-leaves',
   templateUrl: './add-leaves.component.html',
@@ -46,6 +47,10 @@ public onAddLeave(addForm:NgForm){
     (response:Leave)=>{
       console.log(response);
       this.leave=response;
+      //addForm.reset();
+      //response.typeConje=;
+      //response.date_debut=new Date();
+      //response.date_fin=new Date();
     },
     (error:HttpErrorResponse)=>{
       alert(error.message);

@@ -6,14 +6,14 @@
       --Choisir le departement--
     </a>
 
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li> <a class="dropdown-item" href="#">Something else here</a></li>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" *ngFor="let d of departments">
+      <li><a class="dropdown-item" href="#"></a>{{d.nom}}</li>
+
     </ul>
   </div>
   <br>
-  <table class="table table-bordered table-hover">
+
+  <table class="table table-bordered table-hover ">
     <thead>
       <tr>
         <th scope="col">Name</th>
@@ -23,31 +23,53 @@
         <th scope="col">Start-Date</th>
         <th scope="col">End-Date</th>
         <th scope="col">Department</th>
-        <th scope='col colspan="2" '>Action</th>
-
-
+        <th scope="">Action</th>
       </tr>
     </thead>
     <tbody>
+      <ng-container *ngFor="let e of employees">
+        <tr *ngFor="let l of e.leaves">
 
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-
-      </tr>
-
-
-
+          <td></td>
+          <td>{{e.matricule}}</td>
+          <td>{{l.typeConje}}</td>
+          <td>{{l.duree_conje}}</td>
+          <td>{{l.date_debut}}</td>
+          <td>{{l.date_fin}}</td>
+          <td>{{e.department.nom}}</td>
+          <td>
+            <button class="btn btn-sm btn-warning">
+              <i class="fa fa-edit"></i>Edit
+            </button>&nbsp;
+            <button class="btn btn-sm btn-danger" (click)="onDeleteLeave(l?.id)">
+              <i class="fa fa-remove"></i>Delete
+            </button>
+          </td>
+        <tr>
+      </ng-container>
     </tbody>
   </table>
 
-
-
-
 </div>
+<!-- Delete Modal -->
+<!--<div class="modal fade" id="deleteEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="deleteModelLabel" style="color: black;">Delete Employee</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p style="color: black;">Are you sure you want to delete employee  </p>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+              <button class="btn btn-danger"  data-dismiss="modal">Yes</button>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>-->
+
+<router-outlet></router-outlet>

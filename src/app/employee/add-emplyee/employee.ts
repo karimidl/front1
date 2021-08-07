@@ -1,3 +1,4 @@
+import { Department } from './../../Entities/department';
 import { Leave } from 'src/app/Entities/leave';
 export interface Employee{
 
@@ -17,5 +18,6 @@ service_affectation : String;
 localite : String;
 photo : String;
 leaves: Leave[];
+department:Department;
 
 }

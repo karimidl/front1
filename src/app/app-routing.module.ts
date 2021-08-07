@@ -9,6 +9,8 @@ import { EmployeeInfoComponent } from './employee/employee-info/employee-info.co
 import { ListLeavesComponent } from './leave/list-leaves/list-leaves.component';
 import { InfoLeaveComponent } from './leave/info-leave/info-leave.component';
 import { AddLeavesComponent } from './leave/add-leaves/add-leaves.component';
+import { DeleteLeaveComponent } from './leave/delete-leave/delete-leave.component';
+import { EditLeavesComponent } from './leave/edit-leaves/edit-leaves.component';
 
 const routes: Routes = [
   {
@@ -42,6 +44,14 @@ const routes: Routes = [
   {
     path:'addleave/:id',
     component:AddLeavesComponent
+  },
+  {
+    path:'deleteleave',
+    component:DeleteLeaveComponent
+  },
+  {
+    path:'editleave',
+    component:EditLeavesComponent
   },
   {
     path: '',
