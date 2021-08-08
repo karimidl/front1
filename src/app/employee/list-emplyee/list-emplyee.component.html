@@ -1,6 +1,14 @@
 <div class="container">
+  <form class="form-inline my-2 my-lg-0">
+    <input type="search"
+    name="key" id="searchName" [(ngModel)]="filterDepName"
+    ngModel class="form-control mr-sm-2" placeholder="Chercher Dep..." required>
+    <input type="search"
+    name="key" id="searchName" [(ngModel)]="filterEmpName"
+    ngModel class="form-control mr-sm-2" placeholder="Chercher Agent..." required>
+  </form>
   <div class="row">
-      <div  *ngFor="let employee of employees" class="col-md-6 col-xl-3">
+      <div  *ngFor="let employee of filterEmployess()" class="col-md-6 col-xl-3">
           <div class="card m-b-30">
               <div class="card-body row">
                   <div class="col-6">

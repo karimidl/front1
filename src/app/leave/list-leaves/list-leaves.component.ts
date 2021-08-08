@@ -6,6 +6,8 @@ import { Leave } from 'src/app/Entities/leave';
 import { LeavesService } from 'src/app/service/leaves.service';
 import { EmployeeService } from 'src/app/service/employee.service';
 import { DepartmentService } from 'src/app/service/department.service';
+import { LeaveType } from 'src/app/Entities/leavetype';
+import { LeaveTypeService } from 'src/app/service/leave-type.service';
 
 
 @Component({
@@ -14,17 +16,22 @@ import { DepartmentService } from 'src/app/service/department.service';
   styleUrls: ['./list-leaves.component.css']
 })
 export class ListLeavesComponent implements OnInit {
-  public leaves:Leave[];
+  public leaves:any[]=[];
   public employees:Employee[];
   public deleteleave:Leave;
   public department:Department;
   public departments:Department[];
+  private leaveTypes:LeaveType[];
+
+  selectedLeave:Leave;
 
   constructor(private leavesService:LeavesService,private depService:DepartmentService,
+              private leaveTypesService:LeaveTypeService,
               private employeeService:EmployeeService) { }
 
   ngOnInit(): void {
     this.getemployees();
+    //this.getLeaveType();
    // this.getLeaves();
   }
  public getDep():void{
@@ -55,6 +62,20 @@ export class ListLeavesComponent implements OnInit {
       (response:Employee[])=>{
         console.log(response);
         this.employees=response;
+        let tablelist:any=[];
+        this.employees.map((employee)=>{
+
+          employee.leaves.map((leave)=>{
+            let newleave:any=leave;
+            newleave.department=employee.department;
+            newleave.matricule=employee.matricule;
+            tablelist.push(newleave)
+          })
+
+
+        })
+        this.leaves.push(...tablelist);
+        console.log("this.leaves",this.leaves)
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -86,7 +107,17 @@ public onDeleteLeave(id:number):void{
 }*/
 
 
-
+public getLeaveType():void{
+  this.leaveTypesService.getLeaveType().subscribe(
+    (response:LeaveType[])=>{
+      console.log(response);
+      this.leaveTypes=response;
+    },
+    (error: HttpErrorResponse) => {
+      alert(error.message);
+    }
+  );
+  }
 
 
 

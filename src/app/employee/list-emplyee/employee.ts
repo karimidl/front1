@@ -17,6 +17,7 @@ service_affectation : String;
 localite : String;
 photo : String;
 leaves: Leave[];
+department:any;
 
 
 

@@ -30,9 +30,9 @@
       <ng-container *ngFor="let e of employees">
         <tr *ngFor="let l of e.leaves">
 
-          <td></td>
-          <td>{{e.matricule}}</td>
           <td>{{l.typeConje}}</td>
+          <td>{{e.matricule}}</td>
+<td></td>
           <td>{{l.duree_conje}}</td>
           <td>{{l.date_debut}}</td>
           <td>{{l.date_fin}}</td>
@@ -50,6 +50,114 @@
     </tbody>
   </table>
 
+  <p-table #dt1 [value]="leaves" selectionMode="single" [(selection)]="selectedLeave" dataKey="id" styleClass="p-datatable-customers"
+      [rows]="2" [paginator]="true" stateStorage="local" stateKey="statedemo-local">
+      <ng-template pTemplate="header">
+          <tr>
+              <th pSortableColumn="typeConje">Type Congé <p-sortIcon field="typeConje"></p-sortIcon></th>
+              <th pSortableColumn="matricule">Matricule <p-sortIcon field="matricule"></p-sortIcon></th>
+              <th pSortableColumn="duree_conje">Durée Congé <p-sortIcon field="duree_conje"></p-sortIcon></th>
+              <th pSortableColumn="date_debut">Date Début <p-sortIcon field="date_debut"></p-sortIcon></th>
+              <th pSortableColumn="date_fin">Date Fin <p-sortIcon field="date_fin"></p-sortIcon></th>
+              <th pSortableColumn="department.nom">Departement <p-sortIcon field="department.nom"></p-sortIcon></th>
+              <!-- <th pSortableColumn="matricule">Matricule <p-sortIcon field="matricule"></p-sortIcon></th>
+              <th pSortableColumn="representative.name">Representative <p-sortIcon field="representative.name"></p-sortIcon></th>
+              <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th> -->
+              <th >Action</th>
+          </tr>
+          <tr>
+              <th>
+                  <input pInputText type="text" (input)="dt1.filter($event.target.value, 'typeConje', 'contains')" [value]="dt1.filters['name']?.value" placeholder="Search by Name" class="p-column-filter">
+              </th>
+              <th>
+                  <input pInputText type="text" (input)="dt1.filter($event.target.value, 'typeConje', 'contains')" [value]="dt1.filters['name']?.value" placeholder="Search by Name" class="p-column-filter">
+              </th>
+              <th>
+                  <input pInputText type="text" (input)="dt1.filter($event.target.value, 'typeConje', 'contains')" [value]="dt1.filters['name']?.value" placeholder="Search by Name" class="p-column-filter">
+              </th>
+              <th>
+                  <input pInputText type="text" (input)="dt1.filter($event.target.value, 'typeConje', 'contains')" [value]="dt1.filters['name']?.value" placeholder="Search by Name" class="p-column-filter">
+              </th>
+              <th>
+                  <input pInputText type="text" (input)="dt1.filter($event.target.value, 'typeConje', 'contains')" [value]="dt1.filters['name']?.value" placeholder="Search by Name" class="p-column-filter">
+              </th>
+              <th>
+                  <input pInputText type="text" (input)="dt1.filter($event.target.value, 'department.nom', 'contains')" [value]="dt1.filters['department.nom']?.value" placeholder="Search by Departement>" class="p-column-filter">
+              </th>
+              <!-- <th>
+                  <input pInputText type="text" (input)="dt1.filter($event.target.value, 'country.name', 'contains')" [value]="dt1.filters['country.name']?.value" placeholder="Search by Country" class="p-column-filter">
+              </th>
+              <th>
+                  <input pInputText type="text" (input)="dt1.filter($event.target.value, 'representative.name', 'contains')" [value]="dt1.filters['representative.name']?.value" placeholder="Search by Representative" class="p-column-filter">
+              </th>
+              <th>
+                  <input pInputText type="text" (input)="dt1.filter($event.target.value, 'status', 'contains')" [value]="dt1.filters['status']?.value" placeholder="Search by Status" class="p-column-filter">
+              </th> -->
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-leave>
+          <tr [pSelectableRow]="leave">
+              <td>
+                  <!-- <span class="p-column-title">Name</span> -->
+                  <!-- {{leave.typeConje}} -->
+                  {{leave.typeConje}}
+              </td>
+              <td>
+                  <!-- <span class="p-column-title">Country</span>
+                  <span class="image-text">{{customer.matricule}}</span> -->
+
+                  {{leave.matricule}}
+              </td>
+              <td>
+                  <!-- <span class="p-column-title">Country</span>
+                  <span class="image-text">{{customer.matricule}}</span> -->
+
+                  {{leave.duree_conje}}
+              </td>
+              <td>
+                  <!-- <span class="p-column-title">Country</span>
+                  <span class="image-text">{{customer.matricule}}</span> -->
+
+                  {{leave.date_debut}}
+              </td>
+              <td>
+                  <!-- <span class="p-column-title">Country</span>
+                  <span class="image-text">{{customer.matricule}}</span> -->
+
+                  {{leave.date_fin}}
+              </td>
+              <td>
+                  <!-- <span class="p-column-title">Country</span>
+                  <span class="image-text">{{customer.matricule}}</span> -->
+
+                  {{leave.department.nom}}
+              </td>
+
+              <!-- <td>
+                  <span class="p-column-title">Representative</span>
+                  <span class="image-text">{{customer.representative.name}}</span>
+              </td>
+              <td>
+                  <span class="p-column-title">Status</span>
+                  <span [class]="'customer-badge status-' + customer.status">{{customer.status}}</span>
+              </td> -->
+
+              <td>
+                <button class="btn btn-sm btn-warning">
+                  <i class="fa fa-edit"></i>Edit
+                </button>&nbsp;
+                <button class="btn btn-sm btn-danger" (click)="onDeleteLeave(leave?.id)">
+                  <i class="fa fa-remove"></i>Delete
+                </button>
+              </td>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+          <tr>
+              <td colspan="4">No customers found.</td>
+          </tr>
+      </ng-template>
+  </p-table>
 </div>
 <!-- Delete Modal -->
 <!--<div class="modal fade" id="deleteEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
@@ -72,4 +180,117 @@
   </div>
 </div>-->
 
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
+
+<div class="card">
+  <p-table #dt1 [value]="leaves" selectionMode="single" [(selection)]="selectedLeave" dataKey="id" styleClass="p-datatable-customers"
+      [rows]="2" [paginator]="true" stateStorage="local" stateKey="statedemo-local">
+      <ng-template pTemplate="header">
+          <tr>
+              <th pSortableColumn="typeConje">Type Congé <p-sortIcon field="typeConje"></p-sortIcon></th>
+              <th pSortableColumn="matricule">Matricule <p-sortIcon field="matricule"></p-sortIcon></th>
+              <th pSortableColumn="duree_conje">Durée Congé <p-sortIcon field="duree_conje"></p-sortIcon></th>
+              <th pSortableColumn="date_debut">Date Début <p-sortIcon field="date_debut"></p-sortIcon></th>
+              <th pSortableColumn="date_fin">Date Fin <p-sortIcon field="date_fin"></p-sortIcon></th>
+              <th pSortableColumn="department.nom">Departement <p-sortIcon field="department.nom"></p-sortIcon></th>
+              <!-- <th pSortableColumn="matricule">Matricule <p-sortIcon field="matricule"></p-sortIcon></th>
+              <th pSortableColumn="representative.name">Representative <p-sortIcon field="representative.name"></p-sortIcon></th>
+              <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th> -->
+              <th >Action</th>
+          </tr>
+          <tr>
+              <th>
+                  <input pInputText type="text" (input)="dt1.filter($event.target.value, 'typeConje', 'contains')" [value]="dt1.filters['name']?.value" placeholder="Search by Name" class="p-column-filter">
+              </th>
+              <th>
+                  <input pInputText type="text" (input)="dt1.filter($event.target.value, 'typeConje', 'contains')" [value]="dt1.filters['name']?.value" placeholder="Search by Name" class="p-column-filter">
+              </th>
+              <th>
+                  <input pInputText type="text" (input)="dt1.filter($event.target.value, 'typeConje', 'contains')" [value]="dt1.filters['name']?.value" placeholder="Search by Name" class="p-column-filter">
+              </th>
+              <th>
+                  <input pInputText type="text" (input)="dt1.filter($event.target.value, 'typeConje', 'contains')" [value]="dt1.filters['name']?.value" placeholder="Search by Name" class="p-column-filter">
+              </th>
+              <th>
+                  <input pInputText type="text" (input)="dt1.filter($event.target.value, 'typeConje', 'contains')" [value]="dt1.filters['name']?.value" placeholder="Search by Name" class="p-column-filter">
+              </th>
+              <th>
+                  <input pInputText type="text" (input)="dt1.filter($event.target.value, 'department.nom', 'contains')" [value]="dt1.filters['department.nom']?.value" placeholder="Search by Departement>" class="p-column-filter">
+              </th>
+              <!-- <th>
+                  <input pInputText type="text" (input)="dt1.filter($event.target.value, 'country.name', 'contains')" [value]="dt1.filters['country.name']?.value" placeholder="Search by Country" class="p-column-filter">
+              </th>
+              <th>
+                  <input pInputText type="text" (input)="dt1.filter($event.target.value, 'representative.name', 'contains')" [value]="dt1.filters['representative.name']?.value" placeholder="Search by Representative" class="p-column-filter">
+              </th>
+              <th>
+                  <input pInputText type="text" (input)="dt1.filter($event.target.value, 'status', 'contains')" [value]="dt1.filters['status']?.value" placeholder="Search by Status" class="p-column-filter">
+              </th> -->
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-leave>
+          <tr [pSelectableRow]="leave">
+              <td>
+                  <!-- <span class="p-column-title">Name</span> -->
+                  <!-- {{leave.typeConje}} -->
+                  {{leave.typeConje}}
+              </td>
+              <td>
+                  <!-- <span class="p-column-title">Country</span>
+                  <span class="image-text">{{customer.matricule}}</span> -->
+
+                  {{leave.matricule}}
+              </td>
+              <td>
+                  <!-- <span class="p-column-title">Country</span>
+                  <span class="image-text">{{customer.matricule}}</span> -->
+
+                  {{leave.duree_conje}}
+              </td>
+              <td>
+                  <!-- <span class="p-column-title">Country</span>
+                  <span class="image-text">{{customer.matricule}}</span> -->
+
+                  {{leave.date_debut}}
+              </td>
+              <td>
+                  <!-- <span class="p-column-title">Country</span>
+                  <span class="image-text">{{customer.matricule}}</span> -->
+
+                  {{leave.date_fin}}
+              </td>
+              <td>
+                  <!-- <span class="p-column-title">Country</span>
+                  <span class="image-text">{{customer.matricule}}</span> -->
+
+                  {{leave.department.nom}}
+              </td>
+
+              <!-- <td>
+                  <span class="p-column-title">Representative</span>
+                  <span class="image-text">{{customer.representative.name}}</span>
+              </td>
+              <td>
+                  <span class="p-column-title">Status</span>
+                  <span [class]="'customer-badge status-' + customer.status">{{customer.status}}</span>
+              </td> -->
+
+              <td>
+                <button class="btn btn-sm btn-warning">
+                  <i class="fa fa-edit"></i>Edit
+                </button>&nbsp;
+                <button class="btn btn-sm btn-danger" (click)="onDeleteLeave(leave?.id)">
+                  <i class="fa fa-remove"></i>Delete
+                </button>
+              </td>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+          <tr>
+              <td colspan="4">No customers found.</td>
+          </tr>
+      </ng-template>
+  </p-table>
+</div>
+
+

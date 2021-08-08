@@ -25,14 +25,14 @@ export class EditEmplyeeComponent implements OnInit {
       this.id = params['id'];
       console.log('Url Id: ', id);
       // console.log('activateRoute : ', this.activatedRoute);
-      /*this.employeeService.getEmployeeById(id).subscribe(
+      this.employeeService.getEmployeeById(id).subscribe(
         (response: Employee) => {
           this.employee = response;
         },
         (error: HttpErrorResponse) => {
           alert(error.message);
         }
-      );*/
+      );
     });
   }
   public onEditEmployee(editForm: NgForm) {

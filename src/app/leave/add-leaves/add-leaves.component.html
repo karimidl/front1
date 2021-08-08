@@ -18,9 +18,12 @@
                   <div class="row justify-content-between text-left">
                       <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">The substitute :<span class="text-danger"> *</span></label> &nbsp; &nbsp;<input type="text" id="poste_budgetaire"  name="poste_budgetaire"  /> </div>
                   </div>
-                  <div class="row justify-content-between text-left">
-                      <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Leave Type<span class="text-danger"> *</span>&nbsp; &nbsp;</label> <input type="text" id="typeConje" ngModel name="typeConje"  /> </div>
-                  </div>
+
+                  <div class="row justify-between text-left">
+                    <div class="form-group col-sm-6 flex-column d-flex">Leave Type:<br> <select name="leaveTypeId" id="nomtype" ngModel>
+                      <option *ngFor="let lt of leavetypes" value={{lt?.id}} >{{lt?.nom}}</option>
+                    </select> </div>
+                </div>
                   <div class="row justify-content-end">
                       <div class="form-group col-sm-6 yesb"> <button type="submit" class="btn-block btn-primary" >Ajouter Conge</button> </div>
                   </div>

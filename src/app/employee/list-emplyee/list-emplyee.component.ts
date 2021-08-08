@@ -13,6 +13,8 @@ export class ListEmplyeeComponenet implements OnInit {
 
   public employees: Employee[];
   public editemployee:Employee;
+  public filterDepName="";
+  public filterEmpName="";
 
   constructor(private employeeService:EmployeeService) { }
 
@@ -55,6 +57,12 @@ export class ListEmplyeeComponenet implements OnInit {
          // this.getEmployees();
         //alert('not found');
         }*/
+  }
+
+  public filterEmployess():any{
+    return this.employees.filter((employee)=>{
+      return employee.nom.toLowerCase().includes(this.filterEmpName.toLowerCase()) && employee.department.nom.toLowerCase().includes(this.filterDepName.toLowerCase());
+    })
   }
 
 }

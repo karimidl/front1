@@ -19,6 +19,18 @@ import { ListLeavesComponent } from './leave/list-leaves/list-leaves.component';
 import { AddLeavesComponent } from './leave/add-leaves/add-leaves.component';
 import { InfoLeaveComponent } from './leave/info-leave/info-leave.component';
 
+import {TableModule} from 'primeng/table';
+import {ToastModule} from 'primeng/toast';
+import {CalendarModule} from 'primeng/calendar';
+import {SliderModule} from 'primeng/slider';
+import {MultiSelectModule} from 'primeng/multiselect';
+import {ContextMenuModule} from 'primeng/contextmenu';
+import {DialogModule} from 'primeng/dialog';
+import {ButtonModule} from 'primeng/button';
+import {DropdownModule} from 'primeng/dropdown';
+import {ProgressBarModule} from 'primeng/progressbar';
+import {InputTextModule} from 'primeng/inputtext';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,8 +47,19 @@ import { InfoLeaveComponent } from './leave/info-leave/info-leave.component';
     InfoLeaveComponent,
   ],
   imports: [
-    BrowserModule,HttpClientModule,
-    AppRoutingModule,FormsModule
+    BrowserModule,    HttpClientModule,
+    AppRoutingModule,FormsModule,
+    TableModule,
+    CalendarModule,
+		SliderModule,
+		DialogModule,
+		MultiSelectModule,
+		ContextMenuModule,
+		DropdownModule,
+		ButtonModule,
+		ToastModule,
+    InputTextModule,
+    ProgressBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
